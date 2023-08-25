@@ -7,8 +7,15 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+//Quitting procedure. This need to be called before exiting in order to release resources
+void sdlQuitProc(SDL_Window *window) {
+    //Destroy window
+    SDL_DestroyWindow(window);
 
-void sdlQuitProc(SDL_Window *window);
+    //Quit SDL subsystems
+    SDL_Quit();
+}
+
 
 int main(int argc, char *args[]) {
     //The window we'll be rendering to
@@ -48,13 +55,4 @@ int main(int argc, char *args[]) {
     sdlQuitProc(window);
 
     return 0;
-}
-
-//Quitting procedure. This need to be called before exiting in order to release resources
-void sdlQuitProc(SDL_Window *window) {
-    //Destroy window
-    SDL_DestroyWindow(window);
-
-    //Quit SDL subsystems
-    SDL_Quit();
 }
