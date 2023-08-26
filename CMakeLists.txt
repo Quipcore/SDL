@@ -1,23 +1,14 @@
-cmake_minimum_required(VERSION 3.12)
-project(SDLGame)  # Replace "YourProjectName" with your project's name
+cmake_minimum_required(VERSION 3.25)
+project(SDLGame)
 
-# Set the path to the SDL library
-set(SDL2_PATH ${PROJECT_SOURCE_DIR}/lib/SDL2/)
+set(CMAKE_CXX_STANDARD 23)
 
-# Include SDL CMake modules to find SDL2
-list(APPEND CMAKE_MODULE_PATH ${SDL2_PATH}/cmake/SDL2)
+set(SDL2_INCLUDE_DIR lib/SDL2/include)
+set(SDL2_LIB_DIR lib/SDL2/lib/x64)
 
-# Find the SDL2 library
-find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIR})
+link_directories(${SDL2_LIB_DIR})
 
-# Add your project's source files here
-set(SOURCE_FILES
-        main.cpp
-        # Add your other source files here
-        )
+add_executable(${PROJECT_NAME} main.cpp)
 
-# Create the executable for your project
-add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-
-# Link the SDL2 library to your project
-target_link_libraries(${PROJECT_NAME} SDL2::SDL2)
+target_link_libraries(${PROJECT_NAME} -lSDL2main -lSDL2)
