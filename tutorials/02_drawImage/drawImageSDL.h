@@ -5,11 +5,19 @@
 #ifndef SDLGAME_DRAWIMAGESDL_H
 #define SDLGAME_DRAWIMAGESDL_H
 
+#include "SDL.h"
 
 class drawImageSDL {
 public:
     int run();
 private:
+    //Screen dimension constants
+    const int SCREEN_WIDTH = 640;
+    const int SCREEN_HEIGHT = 480;
+
+    SDL_Window* gWindow = NULL;
+    SDL_Surface* gScreenSurface = NULL;
+    SDL_Surface* gHelloWorld = NULL;
     bool init();
     bool loadMedia();
     void close();

@@ -7,28 +7,24 @@
 #include "cstdio"
 #include "string"
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
 
-SDL_Window* gWindow = NULL;
-SDL_Surface* gScreenSurface = NULL;
-SDL_Surface* gHelloWorld = NULL;
 
 int drawImageSDL::run() {
 
     if(!init()) {
         printf("Failed to initialize!\n");
+        close();
         return -1;
     }
 
     if(!loadMedia())
     {
         printf( "Failed to load media!\n" );
+        close();
         return -2;
     }
 
-    SDL_BlitSurface(gHelloWorld, NULL, gScreenSurface,NULL);
+    SDL_BlitSurface(gHelloWorld, NULL, gScreenSurface, NULL);
     //Update the surface
     SDL_UpdateWindowSurface( gWindow );
     //Hack to get window to stay up
@@ -64,8 +60,8 @@ bool drawImageSDL::init() {
 bool drawImageSDL::loadMedia() {
     const char *bmpPath = "../resources/helloWorld.bmp";
     //Load splash image
-    gHelloWorld = SDL_LoadBMP( bmpPath );
-    if( gHelloWorld == NULL )
+    gHelloWorld = SDL_LoadBMP(bmpPath );
+    if(gHelloWorld == NULL )
     {
         printf( "Unable to load image %s! SDL Error: %s\n", bmpPath, SDL_GetError() );
         return false;
@@ -76,7 +72,7 @@ bool drawImageSDL::loadMedia() {
 
 void drawImageSDL::close() {
     //Deallocate surface
-    SDL_FreeSurface( gHelloWorld );
+    SDL_FreeSurface(gHelloWorld );
     gHelloWorld = NULL;
 
     //Destroy window
