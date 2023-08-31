@@ -12,8 +12,8 @@ public:
     int run();
 private:
     //Screen dimension constants
-    const int SCREEN_WIDTH = 640;
-    const int SCREEN_HEIGHT = 480;
+    const int SCREEN_WIDTH = 594;
+    const int SCREEN_HEIGHT = 594;
 
     SDL_Window* gWindow = NULL;
     SDL_Surface* gScreenSurface = NULL;

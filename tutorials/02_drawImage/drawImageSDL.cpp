@@ -7,8 +7,6 @@
 #include "cstdio"
 #include "string"
 
-
-
 int drawImageSDL::run() {
 
     if(!init()) {
@@ -58,7 +56,7 @@ bool drawImageSDL::init() {
 }
 
 bool drawImageSDL::loadMedia() {
-    const char *bmpPath = "../resources/helloWorld.bmp";
+    const char *bmpPath = "../resources/magik.bmp";
     //Load splash image
     gHelloWorld = SDL_LoadBMP(bmpPath );
     if(gHelloWorld == NULL )
